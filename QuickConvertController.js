@@ -1,12 +1,16 @@
 ({
     
     init : function(component, event, helper) {
-        var action = component.get("c.convertIt");
+        	
+    },
+    
+    ConvertIt : function(component, event, helper) {
+    	var action = component.get("c.convertIt");
       	action.setParams({"recordId": component.get("v.recordId")});
         action.setCallback(this, function(res) {
-         var response = res.getReturnValue();
-         var state = action.getState();
-         console.log(response);
+        var response = res.getReturnValue();
+        var state = action.getState();
+        console.log(response);
         if(component.isValid() && state == "SUCCESS"){            
             var toastEvent = $A.get("e.force:showToast");
             toastEvent.setParams({
@@ -14,7 +18,9 @@
                 "message": "This Lead has been converted.",
                   "type ": "success"
             });
-            toastEvent.fire();            
+
+            toastEvent.fire(); 
+            $A.get("e.force:refreshView").fire();
             
          } else if (state == "ERROR") {
             console.log('There was a problem and the state is: '+ action.getState());
