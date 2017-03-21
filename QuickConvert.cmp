@@ -1,5 +1,20 @@
-<aura:component implements="force:lightningQuickActionWithoutHeader,force:hasRecordId" 
-                controller="QuickLeadConvert">
-   <aura:attribute name="recordId" type="String"/>
-   <aura:handler name="init" value="{!this}" action="{!c.init}" />
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,force:lightningQuickActionWithoutHeader,force:hasRecordId" controller="QuickLeadConvert">
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="doOpp" type="Boolean" description="Create Opportunity during Lead Conversion" />
+    <!--  <aura:handler name="init" value="{!this}" action="{!c.init}" /> -->
+
+    <div class="slds-align--absolute-center">
+        <h3 class="slds-section-title--divider">Convert lead and Send an email to lead Owner.</h3>
+        <br/>
+        
+    </div>
+    <div class="slds-m-top--small slds-align--absolute-center">
+    	<form class="slds-form">
+            <div class="slds-form-element">
+                <ui:button press="{!c.ConvertIt}" label="Quick Convert" class="slds-button slds-button--neutral" />
+            </div>
+        </form>
+    </div>
+
+
 </aura:component>
